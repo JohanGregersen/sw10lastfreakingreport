@@ -1,0 +1,21 @@
+\subsection{Drive-LaB}\label{subsec:drivelab}
+The purpose of Drive-LaB is to have a frontend that allows anyone with a smartphone to track how they drive. To ensure potential for a large audience, Drive-LaB is developed for Android. As of 2015 Q2, over 80\% of shipped smartphones use the Android OS\ref{smartphone_market_share}. Drive-LaB supports Android 4.0 – 6.0.1, making it compatible with over 97\% of current Android devices\ref{android_version_distribution}. The application is available on Google Play, enabling anyone with a compatible device to use it.
+Drive-LaB has two responsibilities in the overall system, namely collection and presentation of location data. All manipulation and storage of data is left to the backend. The Android application consists of two major components addressing each of these responsibilities. The presentation layer is handled by a series of activities, while the data collection is handled by a service running separately. A summary of functionality for each component can be seen in figure \ref{fig:drivelab_feature_summary}. Screenshots of the Drive-LaB GUI can be found in \textbf{Appendix reference her}.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.465\textwidth]{Pictures/drivelab_feature_summary}
+\caption{Summary of Drive-Lab functionality}
+\label{fig:drivelab_feature_summary}
+\end{figure}
+
+\subsubsection{Location Logging}
+Retreiving location updates through Android is done using the Google Play services location APIs, specifically the FusedLocationProviderApi. This API is able to automatically choose the best location provider, maximizing the possible precision and availability of location updates. Locations can therefore be based on both GPS, Cell-ID, and Wi-Fi. To achieve the desired quality and frequency of locations, these settings are used when requesting locations through the FusedLocationProviderApi:
+
+\begin{itemize}
+\item Desired interval: 1000ms
+\item Fastest interval: 1000ms
+\item Priority: High Accuracy
+\end{itemize}
+
+These settings cause Drive-Lab to receive locations exactly once every second whenever possible. Locations are furthermore pinpointed as exact as possible, regardless of battery consumption. This will usually result in GPS positions, as this is generally the more accurate option.
