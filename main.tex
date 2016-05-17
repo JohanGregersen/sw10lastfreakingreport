@@ -1,0 +1,79 @@
+
+%\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out
+                                                          % if you need a4paper
+\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4
+\usepackage[pdftex]{graphicx}
+\usepackage{nameref}
+
+%%% LITTERATURLISTE %%%
+\usepackage[square,numbers]{natbib}
+\usepackage{url}
+
+%For ÆØÅ
+\usepackage[utf8]{inputenc}
+\usepackage{nameref}
+
+%equations
+\usepackage{amsmath}
+
+%\begin{comment}
+\usepackage{verbatim}                
+                
+                                                          % paper
+
+% \IEEEoverridecommandlockouts                              % This command is only
+                                                          % needed if you want to
+                                                          % use the \thanks command
+% \overrideIEEEmargins
+% See the \addtolength command later in the file to balance the column lengths
+% on the last page of the document
+
+\title{\LARGE \bf
+An Advanced Usage Based Insurance And Privacy-Secure Pricing Model
+}
+\author{Morten Møller Jakobsen, Casper Holst Laustsen and Johan Leth Gregersen% <-this % stops a space
+\thanks{*The Department of Computer S, Aalborg University}%
+}
+
+
+\begin{document}
+
+
+
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{Content/Abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Content/Introduction/Introduction}
+
+\input{Content/Architecture/architecture}
+
+\input{Content/DataCollection/datacollection}
+
+\input{Content/Testing/testing}
+
+\input{Content/Testing/EndUserTesting/EndUserTesting}
+
+\input{Content/Testing/SystemTesting/SystemTesting}
+
+\input{Content/RelatedWork/RelatedWork}
+
+\input{Content/Conclusion/Conclusion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{Acknowledgement/Acknowledgement}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{chicago}
+\bibliography{Litterature/litteratur}
+
+
+\end{document}
