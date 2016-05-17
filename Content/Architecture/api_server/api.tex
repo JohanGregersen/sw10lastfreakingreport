@@ -1,0 +1,8 @@
+\subsection{API Server}\label{subsec:api}
+A RESTful Web Service handles a uniform communication interface with the database layer. This interface can facilitate all external communication units that may need access to the database. These units could be statistical extraction layers, web browsers displaying a drivers individual performance, and the main user in this particular solution, the android smartphone client. 
+
+The interface handles requests through the API by executing the necessary SQL statements through the database layer. In case data is expected by the request-entity, the API receives the desired data, serialize it to JSON and sends it back.
+
+The most important task for the API is to receive completed trips. Upon doing so, a series of tasks follows to  compute metrics, flags and scores on each individual trip. Additionally, the trip has to be map-matched, which is done using a 3rd party's API.
+
+The RESTful Web Service is built in C\#, using a built-in \textit{WebServiceHost} .NET library. It is hosted on an ubuntu server.
