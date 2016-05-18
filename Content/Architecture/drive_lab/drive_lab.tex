@@ -9,6 +9,12 @@ Drive-LaB has two responsibilities in the overall system, namely collection and 
 \label{fig:drivelab_feature_summary}
 \end{figure}
 
+\subsubsection{Using Drive-LaB}
+Upon opening Drive-LaB, users are met with a Start/Stop button. When pressed, this button sends a request to the service, to start or stop location tracking. In effect, all tracking data is created manually by the user. The system as a whole judges trips from a car-driving perspective, but can not guarantee the actual use. As such, Drive-LaB can track any form of movement, be it in car, by foot, bicycle, train etc.
+Evaluation of a driven trip is split into three levels, providing varying levels of detail for users. On the first level, Drive-LaB shows identifying information such as distance and when the trip was driven. Furthermore, evaluation of the trip is given in the form of a smiley. Drive-LaB uses five smileys ranging from green and happy to red and sad. The smiley shown is decided from the percentage added from speed, accelerations, brakes and jerks. With a lower percentage added, the user gets a happier smiley.
+Users can choose to inspect trips to see the next level of information. Drive-LaB will then show summarized score calculations, displaying the effect of driving style and environment to the base distance of the trip. A pie chart displays the effect of all metrics relative to each other, providing an overview of what can be bettered.
+On the last level, users are presented with raw numbers. Here, one can see exactly what was registered during a trip, ex. 17 accelerations or 600 meters sped. With each metric, the score influence in percentage is also shown.
+
 \subsubsection{Location Logging}
 Retreiving location updates through Android is done using the Google Play services location APIs, specifically the FusedLocationProviderApi. This API is able to automatically choose the best location provider, maximizing the possible precision and availability of location updates. Locations can therefore be based on both GPS, Cell-ID, and Wi-Fi. To achieve the desired quality and frequency of locations, these settings are used when requesting locations through the FusedLocationProviderApi:
 
@@ -18,4 +24,4 @@ Retreiving location updates through Android is done using the Google Play servic
 \item Priority: High Accuracy
 \end{itemize}
 
-These settings cause Drive-Lab to receive locations exactly once every second whenever possible. Locations are furthermore pinpointed as exact as possible, regardless of battery consumption. This will usually result in GPS positions, as this is generally the more accurate option.
+These settings enables Drive-Lab to receive locations exactly once every second whenever possible. Locations are furthermore pinpointed as exact as possible, regardless of battery consumption. This will usually result in GPS positions, as this is generally the more accurate option.
