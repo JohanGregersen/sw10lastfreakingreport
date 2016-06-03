@@ -1,9 +1,9 @@
 \subsection{API Server}\label{subsec:api}
 A RESTful Web Service handles a uniform communication interface with the database layer. This interface can facilitate all external communication units that may need access to the database. These units could be statistical extraction layers, web browsers displaying a drivers individual performance, and the main user in this particular solution, the android smartphone client. 
 
-The RESTful Web Service is implemented using C\#, and a built-in \textit{WebServiceHost} .NET-library and hosted on an Ubuntu server. The API is naturally open to the internet, but all other access to the server except through the API is blocked. The API then accesses the database-layer through the local network they both are hosted on.
+The RESTful Web Service is implemented using C\#, and a built-in \textit{WebServiceHost} .NET-library and hosted on an Ubuntu server. The API is naturally open to the internet, but all other access to the server except through the API is blocked. The API accesses the database-layer through the local network they both are hosted on.
 
 The interface handles requests through the API by executing the necessary SQL statements through the database layer. In case data is expected by the request-entity, the API receives the desired data, serialize it to JSON and sends it back.
 
-The most important task for the API is to receive completed trips. A trip consist of a series of GPS coordinates and a timestamp. A trip has to be map-matched at first, which is done using 3rd party software\cite{trackmatch}. Hereafter a series of tasks follows to compute metrics, flags and scores on each individual trip\cite{sw9_report}. 
+The most important task for the API is to receive completed trips. A trip consist of a series of GPS coordinates and a timestamp. A trip has to be map-matched at first, which is done using 3rd party software\cite{trackmatch}. Hereafter a series of tasks follows to compute metrics, flags and scores on each individual trip\cite{sw9_report}. In order to calculate a score on an entire trip, metrics are first computed on each individual GPS-coordinate. These are fundamental metrics like speed, acceleration, distance to previous coordinate etc. 
 
