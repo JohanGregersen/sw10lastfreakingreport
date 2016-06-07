@@ -13,6 +13,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{nameref}
 
+%For inserting a PDF into the report
+\usepackage{pdfpages}
+
 %equations
 \usepackage{amsmath}
 
@@ -31,7 +34,7 @@
 \title{\LARGE \bf
 An Advanced Usage Based Insurance And Privacy-Secure Pricing Model
 }
-\author{Morten Møller Jakobsen, Casper Holst Laustsen and Johan Leth Gregersen% <-this % stops a space
+\author{Johan Leth Gregersen, Morten Møller Jakobsen and Casper Holst Laustsen% <-this % stops a space
 \thanks{*The Department of Computer S, Aalborg University}%
 }
 
@@ -52,7 +55,9 @@ An Advanced Usage Based Insurance And Privacy-Secure Pricing Model
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{Content/Introduction/Introduction}
 
-\input{Content/Architecture/architecture}
+\input{Content/Design/Design}
+
+\input{Content/Implementation/implementation}
 
 \input{Content/DataCollection/datacollection}
 
@@ -75,5 +80,6 @@ An Advanced Usage Based Insurance And Privacy-Secure Pricing Model
 \bibliographystyle{chicago}
 \bibliography{Litterature/litteratur}
 
+\input{Appendix/Appendix}
 
 \end{document}
