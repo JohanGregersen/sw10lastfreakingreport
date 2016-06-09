@@ -9,8 +9,15 @@ The data collection is complicated by requiring user interaction. Without additi
 \item Finishing up - Packaging and sending all logged data
 \end{itemize}
 
-These working states are made visible through a central button in the application, as seen in \textbf{FIGURE BLAH}. The progression of working states happens from left to right. "START TUR" (START TRIP) means the application is ready to track a new trip, and invites the user to do so. "STOP TUR" (STOP TRIP) means the application is currently tracking, and invites the user to end the trip when finished. Finally the user is presented with a message, "AFSLUTTER TUR" (FINISHING TRIP), informing the user that the tracking has stopped, but the application is still working. Upon finishing the process of sending the trip to the API server, the application will once again be ready to start a new trip, displaying "START TUR" for the user.
+These working states are made visible through a central button in the application, as seen in \ref{fig:start_stop_finishing_trip}. The progression of working states happens from left to right. "START TUR" (START TRIP) means the application is ready to track a new trip, and invites the user to do so. "STOP TUR" (STOP TRIP) means the application is currently tracking, and invites the user to end the trip when finished. Finally the user is presented with a message, "AFSLUTTER TUR" (FINISHING TRIP), informing the user that the tracking has stopped, but the application is still working. Upon finishing the process of sending the trip to the API server, the application will once again be ready to start a new trip, displaying "START TUR" for the user.
 While the logic behind the button is complex, usage is simple and easy to understand. The user only has to define the beginning and end of a trip; the application takes care of the rest.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.465\textwidth]{Pictures/start_stop_finishing_trip}
+\caption{Design of the Start/Stop/Finishing button}
+\label{fig:start_stop_finishing_trip}
+\end{figure}
 
 Data presentation is complicated, both by the extensiveness of the data itself, but also the limited screen size of a smartphone. In other words, the application has to fit a lot of information into a small screen. With the goal of having an easily understandable system, the extensive data is remedied by using descriptive summaries, rather than presenting raw data. The small screen is however still an issue, and for this reason the application offers a multilevel description of trips, each presenting a certain level of data. Each level of description is presented on its own screen, and ranges from a broad description down to specific statistics. For an arbitrary trip, these screens can be seen in \textbf{FIGUR REF}.
 
