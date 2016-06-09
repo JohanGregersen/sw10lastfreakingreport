@@ -1,0 +1,14 @@
+\subsection{Frontend}\label{subsec:frontend_implementation}
+A goalpost for Drive-LaB is to be easily accessible. To fulfill this goal, Drive-LaB is developed for Android. As of 2015 Q2, over 80\% of shipped smartphones use the Android OS\ref{smartphone_market_share}. Choosing Android as platform has allowed for the release of Drive-LaB on Google Play, making it accessible for the vast majority of smartphone users. Furthermore, the implementation of Drive-LaB supports Android 4.0 – 6.0.1, making it compatible with over 97\% of current Android devices\ref{android_version_distribution}.
+As mentioned in \ref{subsec:frontend_design}, the application has two responsibilities; data logging and data presentation. These responsibilities are mirrored in the structure of the application, seen in \textbf{SE FIGUR BLA}. The application consists of two major components. One is the graphical interface, consisting of 10 different screens. The interface presents data for the user, and allows for interaction with \texttt{Location Service}, the second component.\texttt{Location Service} is an Android Service\textbf{REF}. It runs separately from the rest of the application, in that it has its own process. It is however entirely controlled by the application (See \textbf{REF}). The service is responsible for all logic related to data logging.
+
+\subsubsection{Location Logging}\label{subsubsec:location_logging}
+\texttt{Location Service} is responsible for the continous retreival of location updates, when demanded. Retreiving location updates through Android is done using the Google Play services location APIs, specifically the \texttt{FusedLocationProviderApi}. This API is able to automatically choose the best location provider, maximizing the possible precision and availability of location updates. Locations can therefore be based on both GPS, Cell-ID, and Wi-Fi. To achieve the desired quality and frequency of locations, these settings are used when requesting locations through the FusedLocationProviderApi:
+
+\begin{itemize}
+\item Desired interval: 1000ms
+\item Fastest interval: 1000ms
+\item Priority: High Accuracy
+\end{itemize}
+
+These settings enables Drive-Lab to receive locations exactly once every second whenever possible. Locations are furthermore pinpointed as exact as possible, regardless of battery consumption. This will usually result in GPS positions, as this is generally the more accurate option.
