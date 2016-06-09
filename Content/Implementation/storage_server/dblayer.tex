@@ -1,4 +1,4 @@
 \subsection{Database Layer}\label{subsec:dblayer}
-The database layer handles all the storage involved in the system. The database itself is a modified version of the data-warehouse schema presented in \cite{sw9_report}, hosted through PostgreSQL\cite{postgresql}. The database is separated from the API and hosted on its own server to increase the security level in the entire system. An external entity may get access to the API on the internet, but the database-layer is only accessible from the local network or through the API. In case someone attacks the API and crashes the API-server, the database-layer is still intact. Apart from this architecture decision, no further work has been put into security due to prioritization of resources and our commitment to completing the full range of functionality in the system. 
+
 
 To see the complete data-warehouse schema, \textbf{see appendix X}.
