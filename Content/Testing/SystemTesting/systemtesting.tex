@@ -1,13 +1,54 @@
 \subsection{System Testing}\label{subsec:systemtesting}
+An important factor to validate is the impact on trip-scores caused by the diversity of users' smartphones. In a usage based insurance context, users needs to be treated equally, which relies entirely upon their smartphone and the GPS device inside. E.g. two smartphones logging the same trip, should report the same tripscore. Such an analysis can be quite extensive, involving an entire market of smartphones and different versions of GPS devices. Instead, a small applicability test will tell whether this system is vulnerable to GPS inaccuracy. 
 
-System testing
+An applicability test was conducted by bringing five different smartphones and two high quality GPS trackers into the same car, and recording the trip with all entities at the same time. If the system is applicable for usage based insurance, the smartphones needs to report the same tripscores, and the route needs to be highly similar to those recorded by the high quality GPS trackers. 
 
-An important factor to validate is the impact on trip-scores caused by the diversity of users' smart-phones. In a usage based insurance context, users needs to be treated equally, which relies entirely upon their smart-phone and the GPS device inside. E.g. two smart-phones logging the same trip, should report the same trip-score. Such an analysis can be quite extensive, involving an entire market of smart-phones and different versions of GPS devices. Instead, a small applicability test will tell whether this system is vulnerable to GPS inaccuracy. 
+With these seven devices, four trips were completed driving around in northern Jutland, in the area of Aalborg. Raw data from the trips can be seen in appendix \ref{app:rawtestdata}. A summary of the tripscores for each phone, during the four trips, can be seen in table \ref{tab:smartphone_test}.
 
-An applicability test was conducted by bringing 5 different smart-phones and 2 high quality GPS trackers into the same car, and recording the trip with all entities at the same time. If the system is applicable for usage based insurance, the smart-phones needs to report the same trip-scores, and the route needs to be highly similar to those recorded by the high quality GPS trackers. 
+\begin{table*}[tb]
+\centering
+\caption{The tripscores from all seven recording devices, on all four trips used in the test, can be seen in this table}
+\label{tab:smartphone_test_one}
+\begin{tabular}{lllllllll}
+       & Trip length & OnePlus One & Samsung G. S5 & HTC One Mini 2 & Huawei Y330 & Samsung G. S4 & BT-Q1300ST(\#1) & BT-Q1300ST(\#2) \\
+Trip 1 & ~36200 & 50190.9     & 40091.5       & 75063.2        & 81819.4 & 37010.3       & 37909.8         & 69955.7         \\
+Trip 2 & ~28200 & 58922.3     & 56780.8       & 28734.2        & 128056  & 27761.6       & 25372.5         & 72784.6         \\
+Trip 3 & ~13400 & 42751.4     & 24026         & 21012.4        & 50622.1 & 16927.1       & 20980.8         & 85138.6         \\
+Trip 4 & ~14400 & 23228.1     & 27530.3       & 19202.5        & 13082.1 & 18824.8       & 23916.6         & 27074.8        
+\end{tabular}
+\end{table*}
 
-beskriv resultaterne, måske overordnet, med rå-data i appendix.
+When examining trip 1 from table \ref{tab:smartphone_test} which has a length of approximately 36200 meters, two smartphones and one high quality GPS gets a score ranging from 37000-40000 which is good. But the remaining four tripscores disagree with varying severity. The worth is the Huawei Y330, which score this trip 81819.4. However, the Huawei Y330 only logs 23\% of the average GPS-coordinates compared to the other devices. The Huawei continues this trend throughout the test, and seems unfit for use in usage based insurance. Another alarming result is the degree to which the two high quality GPS devices disagrees. One scores the trip 37909.8 and the other 69955.7 which is a big difference.
 
-There are a couple of issues regarding this applicability test. 
+Looking at trip 2 from table \ref{tab:smartphone_test} which has a length of approximately 28200 meters, three devices range from 25000-28750 in tripscore. The noteworthy result compared to trip 1 is, that the three devices with a low tripscore are not the same as those in trip 1.
+
+The same pattern reoccur with trip 3 from table \ref{tab:smartphone_test}, which has a length of approximately 13400, but this time four devices gets a score ranging from 16500-24050, which are rather similar. The last three devices got a much higher tripscore, the highest being 85138.6, approximately 535\% above the trip-length, and it was logged by one of the high quality GPS devices. To highlight the disagreement between the two high quality GPS devices, the other device got a score of 20980.8. 
+
+The pattern is broken with trip 4 from table \ref{tab:smartphone_test}, where all devices range between 13000-27550. This may still be somewhat diversified scores, but to compare it to trip 3, the highest device only scored approximately 91\% above the trip-length from this trip. The two high quality GPS devices also fairly agrees on the tripscore for trip 4, 23916.6 and 27074.8 respectively. 
+
+When analyzing the results from this test, the immediate thought may be to throw away the smartphone as usage based insurance component. The concern about accuracy, integrity, availability and continuity of service in stand-alone GPS receivers is also raised in\citep{art:challenges_smartphone_ubi} \citep{art:survey_mobile_phone_sensing} \citep{art:smartphones_for_monitoring_and_ubi} \citep{art:insurtelematics} \citep{art:in-car_positioning_technologies}. But two other factors may have influenced the results in table \ref{tab:smartphone_test}. The first factor is GPS interference, in which case the test-setup could have changed the results we received, because all the GPS devices was kept close together in a fabric container and placed in the front of the car near the windshield. This could affect the GPS receivers in each device by them interfering with each other\citep{art:gps_interference_one} \citep{art:gps_interference_two}. This position was decided upon, because a common reference point was valued in the applicability test. One article provides concrete results in terms of coverage from smartphone GPS receivers, and during an 1 hour and 15 minutes trip, 6 brakes was detected with an OBD device inside the car. A total of seven smartphones was brought on this trip, and they had a coverage in the interval of 60\% to 99.7\% when detecting these brakes\citep{art:insurtelematics}, which states they are indeed vulnerable.
+
+The second factor is the use of third party software for map-matching of the spatio-temporal trajectories collected by the smartphones, called TrackMatching\citep{trackmatch}. TrackMatch attempts to mapmatch a series of spatio-temporal points to the OSM road network, and output the entire route by segments and map-adjusted GPS points. How TrackMatch decides to readjust these GPS points are outside our control, and we did not implement a module to oversee this readjusting, so this influence cannot be changed. 
+
+It was decided to repeat the applicability test and eliminate the GPS interference as much as possible. This was done by spreading each GPS device out inside the car, and create as much space between them as possible. The possible margin of error by using a separated reference point was disregarded. 
+
+\begin{table*}[tb]
+\centering
+\caption{My caption}
+\label{tab:smartphone_test_two}
+\begin{tabular}{llllllll}
+       & Trip Length & OnePlus One & Samsung G. S5 & HTC One Mini 2 & Samsung G. S4 & BT-Q1300ST(\#1) & BT-Q1300ST(\#2) \\
+Trip 1 & 36300       & 64511.4     & 46668.4           & 54563.5        & 37474.6           & 37800.1         & 41260.4         \\
+Trip 2 & 28200       & 31074.8     & 48169.3           & 39439.1        & 29242.3           & 30397.4         & 37028.7         \\
+Trip 3 & 13400       & 17102.9     & 19029.6           & 27674.4        & 16671.8           & 26439.6         & 36530.7         \\
+Trip 4 & 14400       & 18223.1     & 22779.1           & 29766.8        & 18094             & 25064.1         & 45327.1        
+\end{tabular}
+\end{table*}
+
+The test results shown in table \ref{tab:smartphone_test_two} once again shows a considerable difference when comparing the two high quality GPS devices. But the difference is decreased substantially compared to the first test, which signifies that some external influence may have been affecting the devices. Looking at the raw data in appendix \ref{app:rawtestdata1} and \ref{app:rawtestdata2}, an observation is that their behavior is consistent. When looking at the amount of accelerations, brakes and jerks, one device consistently counts more than the other. BT-\#1 counted a total of 1529 of these events, whereas BT-\#2 counted a total of 3894. That is 191.125 events per trip on average for BT-\#1, and 486.75 events per trip on average for BT-\#2. This generalization of more events registered by BT-\#2 are present in both tests. This signifies that it may not be able to conclude any comparison between these two devices, because they deliver such different results.
+
+The results from Samsung G. S4, Samsung G. S5 and BT-\#1 from the second test, actually compares well to the results they provided in the first test. There is an influence in the style of driving, but the tests was both performed by the same driver. The driver attempted to follow his personal style of driving during both tests. Additionally, traffic may also influence the results in the tests, but the tests was performed in a similar time-period, both on a weekday. 
+
+The remaining devices disagrees with their results from the first test to the second test, for some of the trips. When looking at the overall result from both tests, the system is not currently applicable for usage based insurance. This is due to the diversity in tripscores for similar trips, making it unfair to the policiy-holders. However, several articles raised concern about the GPS receivers, but also suggested supporting the raw data with model based signal processing and an outlier rejection scheme\citep{art:challenges_smartphone_ubi} \citep{art:insurtelematics} \citep{art:smartphones_for_monitoring_and_ubi}. This would make the trajectories more stringent, and possibly eliminate falsely positive delinquencies caused by a jumpy GPS coordinate. It is considered a good next step to design and implement such a scheme in the system. This scheme could make each GPS receiver agree more with itself. If it could be achieved that every GPS device produces reproducible results, a calibration mechanism could eliminate the diversity caused by different GPS devices. This would ultimately cleanse the instability about accuracy, integrity, availability and continuity of service from stand-alone GPS receivers, and make the system robust enough to apply entirely to usage based insurance.
 
 \input{Content/Testing/SystemTesting/pearsoncorrelation}
