@@ -5,7 +5,7 @@ The trip-processing layer handles the processing of new trips when it receives a
 
 \paragraph{The steps it takes to process a new trip}
 \begin{itemize}
-\item Deserialize from raw GPS data from JSON to C\#-objects
+\item Deserialize from raw GPS data to C\#-objects
 \item Insert a new trip in the database, and obtain the assigned new tripid to this trip
 \item Insert the raw GPS coordinates and timestamp in the GPSFact-table by carid and the new tripid
 \item Call third party software to map-match the raw GPS coordinates. The GPS data is parsed to CSV-format, and then a RESTful API is called to map-match the data. The API returns a set of road-segments used on this trip, and the collection of map-matched GPS coordinates. Then the entries in the GPSFact-table in the database is updated with the map-matched GPS coordinates, road-segment-ids and speed limits.
