@@ -1,13 +1,44 @@
 \subsubsection{API Server}\label{sec:api_server}
 The API server contains three layers: a communication layer, a logic layer, and a data access layer.
 
-\textbf{previous api:}
+The communication layer provides a uniform interface for applications, both web and smartphone clients, to communicate with the backend system. The communication layer is designed to be universal and service all devices: Android, IOS, Windows-Phone, Web, etc. This is achieved by hosting a RESTful Web Service on the API server, with a total of four service endpoints. A service endpoint is an enclosed subset of functionality, placed under a URL-extension to the base address (the IP-address to the server), offering a set of HTTP methods to access the desired functionality in the logic layer. The four service endpoints are Fact, Trip, Car, and Competition. Each service endpoint offer a structured way of communicating with the functionality in these four categories, and as an example, the Fact service endpoint offers three HTTP methods, two GET-methods, namely \texttt{GetFacts}, and \texttt{GetFactsForMap}, which takes a car-id and a trip-id as parameters and returns the set of Facts corresponding to the parameters. Getting the set of Facts needed to display a trip on a map are reduced to only GPS coordinates and timestamp, because no more is needed to display it on the map. The last method in the Fact service endpoint is a POST-method, that accepts a stream of data sent to the server by a client upon ending a trip and sending the trip-data to the backend server, and hereafter it invokes a call to the logic layer to process the stream of data.
 
-A RESTful Web Service handles a uniform communication interface with the database layer. This interface can facilitate all external communication units that may need access to the database. These units could be statistical extraction layers, web browsers displaying a drivers individual performance, and the main user in this particular solution, the android smartphone client. 
+The other three service endpoints function in the same way, by offering structured communication and calling the logical layer for determining what data to either process, or what to return to the client. The Trip service endpoint contains three HTTP-Get methods for a client to requesting either a single trip, all corresponding trips or a customized list of trips to present in a \texttt{ListView} or something similar. The Car service endpoint contains two HTTP-Get methods, and one HTTP-Update method. One HTTP-Get method for returning the data stored for a car-id, and another to get-or-create a new car in the system, given a parameter of the unique combination of numbers assigned to any produced smartphone, called an imei. The HTTP-Update method is used whenever a client wants to provide the system with his or hers desired username. The Competition service endpoint has a total of seven HTTP-methods, and will not be described as thoroughly, but contains methods for return lists of competitions, and the ability to sign-up and sign-down to the available competitions.
 
-The RESTful Web Service is implemented using C\#, and a built-in \textit{WebServiceHost} .NET-library and hosted on an Ubuntu server. The API is naturally open to the internet, but all other access to the server except through the API is blocked. The API accesses the database-layer through the local network they both are hosted on.
+Everything exchanged by clients and the communication layer is wrapped in JSON-format. JSON is a lightweight format, easily parsed by machines and highly supported by libraries build for the mainstream programming languages. An alternative could be XML-format, but the open and close-tag increases the data-overhead which is undesirable, and unnecessary. When a client sends raw data about a trip to the backend, it could be a choice to wrap it in GPX-format(the GPS exchange format) \citep{GPX_format}. The support for GPX is less comprehensive than JSON, and would require diversification in the formats used, which is considered unfavorable. To consider the use of GPX, a test should prove significant benefits in performance and data-overhead reduction, but such a test was not conducted due to prioritization of resources. 
 
-The interface handles requests through the API by executing the necessary SQL statements through the database layer. In case data is expected by the request-entity, the API receives the desired data, serialize it to JSON and sends it back.
+The logic layer is extensive, complex and handles a wide range of functionality in the backend. The logic layer decides what happens when a client accesses a HTTP-method in the communication layer. In some cases, the logic inside the HTTP-method is rather simple, and the logic layer simply make a call to the data access layer, requesting the appropriate raw data. The logic layer then parses the raw data into C\#-objects in order to use a JSON-serialization library to return the result in proper format to the client. This serialization is designed to be very easy, because the system makes use of generalized classes. As an example, the \texttt{Fact} class  only contains three properties: \texttt{EntryId}, \texttt{CarId} and \texttt{TripId}. These are naturally identical to the way a row in the \texttt{GPSFact} tabel look like. The \texttt{Fact} class then contains six additional properties made of objects from subclasses
+
+.with many similarities to the tables in the data warehouse diagram, shown in Appendix \ref{app:datawarehouse}. 
+
+-calls the trip-processing layer
+
+-generalized classes
+-As such, the majority of the properties in the classes in the backend system have a default value. These null-values are not meant to influence the logical computations, and many are represented as -1, which can be detected in the logic layer and handled appropriately.
+
+
+
+The data access layer(DAL) handles inserting, selecting, updating or removing data in the physical data layer on server 2. This library works well with the choice of PostgreSQL as DBMS, see Section \ref{subsec:storageserver} for a physical data layer description. The DAL retrieves rows of data from the physical data layer and return references to C\#-objects in the logic layer, and \texttt{Npgsql} makes this very easy as both SQL statements and C\#-code are handles in the same IDE. This allows the DAL to provide simplified access to the raw data. Queries in the DAL service both complete rows of data and customized selections. This means conversion from raw data to class objects will include extensive null checking in the logic layer, to eliminate null-reference exceptions, because we make use of generalized classes in the backend. 
+
+classes represent tables(rows in the DB)
+
+
+
+
+
+IMPL:
+communication layer:
+The RESTful Web Service is implemented using C\#, and a built-in \textit{WebServiceHost} .NET-library and hosted on an Ubuntu server.
+
+
+logic
+This system uses Json.NET, a popular JSON framework for .NET \citep{json_dot_net}. 
+
+DAL
+The DAL makes use of the extension to .NET called \texttt{Npgsql}\citep{npgsql}, which is a custom .NET Data Provider library for PostgreSQL
+
+
+PREVIOUS SHIT:
 
 The most important task for the API is to receive completed trips. A trip consist of a series of GPS coordinates and a timestamp. A trip has to be map-matched at first, which is done using 3rd party software\cite{trackmatch}. Hereafter a series of tasks follows to compute metrics, flags and scores on each individual trip\cite{sw9_report}. In order to calculate a score on an entire trip, metrics are first computed on each individual GPS-coordinate. These are fundamental metrics like speed, acceleration, distance to previous coordinate etc. 
 
