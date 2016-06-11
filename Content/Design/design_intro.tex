@@ -1,10 +1,10 @@
 A full-stack UBI system is complex by nature, as it involves a considerable amount of data from any driver using the system. This should however not be a concern for neither the end user or insurance company. Drive-LaB is therefore meant to be simple to understand and simple to use.
-A goalpost of this paper is to answer whether smartphones are suitable candidates for UBI. For this purpose, the frontend of Drive-LaB is designed as an mobile application. This also eliminates the need for a custom-built tracking device, increasing accessibility for anyone wanting to use Drive-LaB.
-The design of Drive-LaB as a complete system can be seen in \ref{fig:system_model}. Three overall components exist. From the bottom up, we first have the storage server. In itself, it contains no logic, and simply acts as a storage for the data warehouse. Above the storage server, an API server acts as interface for the frontend, and performs all required operations on incoming data, including database communication. The API server also serves data to the frontend on demand. At the top is the frontend application. It is responsible for trip tracking, and visual presentation of results calculated on the API server. As such the frontend allows end users to evaluate trips after driving them.
+A goal of this paper is to answer whether smartphones are suitable candidates for UBI. For this purpose, the frontend of Drive-LaB is designed as an mobile application. This also eliminates the need for a custom-built tracking device, increasing accessibility for anyone wanting to use Drive-LaB.
+The design of Drive-LaB as a complete system can be seen in figure \ref{fig:system_model}. Three overall components exist. At the right side of figure \ref{fig:system_model}, is the storage server. In itself, it contains no logic, and simply acts as a storage for the data warehouse. Left of the storage server, an API server acts as interface for the frontend, and performs all required operations on incoming data. No data is stored on the API server permanently, but is instead sent to the storage server. Finally, Drive-LaB has a frontend application. It is responsible for location tracking, and visual presentation of the results calculated on the API server. As such the frontend allows end users to evaluate trips after driving them. External services such as GPS satellites are used to provide location data for Drive-LaB.
 
-\begin{figure}[tb]
+\begin{figure*}[tb]
 \centering
-\includegraphics[width=0.465\textwidth]{Pictures/system_model}
+\includegraphics[width=0.95\textwidth]{Pictures/system_model}
 \caption{Composition of the system}
 \label{fig:system_model}
-\end{figure}
+\end{figure*}
