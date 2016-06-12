@@ -21,8 +21,7 @@ Jerks                 & -0,241    & 0.313                 & 0.144    & 0.828    
 \end{tabular}
 \end{table*}
 
-Looking closer at the multicollinearity between accelerations and brakes, there are a couple of different factors which affect the result. As mentioned accelerating and braking are diametrically opposite, but they are both dependent on the speed of the vehicle (as they are calculated through the change in speed). If the driver performs a big acceleration, his speed is high and he, at some point, needs to brake in order to decline in speed. 
-\textbf{OG HVIS MAN KØRER MED STORE ACCELERATION PÅ VEJ OP I FART, ER MAN MÅSKE MERE TILBØJELIG TIL AT BREMSE HÅRDT OP OGSÅ?}
+Looking closer at the multicollinearity between accelerations and brakes, there are a couple of different factors which affect the result. As mentioned accelerating and braking are diametrically opposite, but they are both dependent on the speed of the vehicle (as they are calculated through the change in speed). Given a trip starts and ends at the same speed(0 km/t), the accumulated acceleration must be equal to the accumulated brake.
 
 \begin{figure}[tb]
 \centering
@@ -40,5 +39,3 @@ Jerks was the metric that met the highest level of skepticism when the scoringmo
 \caption{The correlation between acceleration- and jerkscore}
 \label{fig:ajcorrel}
 \end{figure}
-
-The similar correlation between the two can be answered by the correlation between accelerations and brakes. \textbf{BETWEEN THE TWO... WHAT TWO? :)}
