@@ -11,26 +11,4 @@ The logic layer is extensive, complex and handles a wide range of functionality 
 
 The logical layer passes the task of processing of new trips to the trip-processing layer which is hosted on the more powerful of the two servers. This utilizes the computation-power available on the two servers most optimal, because trip-processing is the main consumer of computation-power. Trip-processing is described in Section \ref{subsec:storageserver}. 
 
-The data access layer(DAL) handles inserting, selecting, updating or removing data in the physical data layer on server 2. This library works well with the choice of PostgreSQL as DBMS, see Section \ref{subsec:storageserver} for a physical data layer description. The DAL retrieves rows of data from the physical data layer and return references to C\#-objects in the logic layer, and \texttt{Npgsql} makes this very easy as both SQL statements and C\#-code are handles in the same IDE. This allows the DAL to provide simplified access to the raw data. Queries in the DAL service both complete rows of data and customized selections. This means conversion from raw data to class objects will include extensive null checking in the logic layer, to eliminate null-reference exceptions, because we make use of generalized classes in the backend. 
-
-
-
-
-
-
-IMPL:
-communication layer:
-The RESTful Web Service is implemented using C\#, and a built-in \textit{WebServiceHost} .NET-library and hosted on an Ubuntu server.
-
-
-logic
-This system uses Json.NET, a popular JSON framework for .NET \citep{json_dot_net}. 
-
-DAL
-The DAL makes use of the extension to .NET called \texttt{Npgsql}\citep{npgsql}, which is a custom .NET Data Provider library for PostgreSQL
-
-
-PREVIOUS SHIT:
-
-The most important task for the API is to receive completed trips. A trip consist of a series of GPS coordinates and a timestamp. A trip has to be map-matched at first, which is done using 3rd party software\cite{trackmatch}. Hereafter a series of tasks follows to compute metrics, flags and scores on each individual trip\cite{sw9_report}. In order to calculate a score on an entire trip, metrics are first computed on each individual GPS-coordinate. These are fundamental metrics like speed, acceleration, distance to previous coordinate etc. 
-
+The data access layer(DAL) handles inserting, selecting, updating or removing data in the physical data layer on server 2. This layer has to work well with the choice of PostgreSQL as DBMS, see Section \ref{subsec:storageserver} for a physical data layer description. The DAL retrieves rows of data from the physical data layer and return references to C\#-objects in the logic layer. This allows the DAL to provide simplified access to raw data. Queries in the DAL service both complete rows of data and customized selections. This means conversion from raw data to class objects will include extensive null checking in the logic layer, to eliminate null-reference exceptions, because we make use of generalized classes in the backend. 
