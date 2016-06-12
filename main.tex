@@ -7,8 +7,10 @@
 \usepackage[table]{xcolor}
 \definecolor{tableshade}{rgb}{0.8, 0.87, 0.84}
 \definecolor{tablegreen}{rgb}{0.26, 0.63, 0.28}
-\definecolor{tablewhite}{rgb}{1,1,1}
 \rowcolors{1}{}{tableshade}
+
+%multiple Appendices
+\usepackage[titletoc]{appendix}
 
 \usepackage[pdftex]{graphicx}
 \usepackage{nameref}
@@ -56,8 +58,8 @@ Drive-LaB: An Experimental Platform for Usage Based Car Insurance
 	{\scshape\LARGE Drive-LaB: An Experimental Platform for Usage Based Car Insurance\par}
 	\vspace{0.5cm}
 	{\huge\bfseries Preface\par}
-	\vspace{1.5cm}
-	The project builds on \textbf{REFERENCE TIL TIDLIGERE PROJEKT}. The following paper will use the scoring algorithm and data warehouse as a basis for the system everywhere, except where specified otherwise. A description of the major changes are located in Section 1.1 labelled prerequisites. 
+	\vspace{0.5cm}
+	The project builds on \ref{sw9_report}. The following paper will use the scoring algorithm and data warehouse as a basis for the system everywhere, except where specified otherwise. A description of the major changes are located in Section 1.1 labelled prerequisites. 
 
 \begin{table} [h]
 	\centering
@@ -104,6 +106,7 @@ Drive-LaB: An Experimental Platform for Usage Based Car Insurance
 \bibliographystyle{chicago}
 \bibliography{Litterature/litteratur}
 
-\input{Appendix/Appendix}
+\include{Appendix/Appendix}
+
 
 \end{document}
