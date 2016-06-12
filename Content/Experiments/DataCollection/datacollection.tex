@@ -9,7 +9,9 @@ Throughout the test the trips have been evaluated based on a policy. The policy 
 
 \begin{table}
     \centering
-    \begin{tabular}{ll}
+    \begin{tabular}{|ll|}
+    \hline
+    \rowcolor{tablegreen}
     \textbf{Roadtype} & \textbf{Weight} \\ \hline
     Motorway          & 0.8               \\
     Trunk             & 0.9               \\
@@ -26,13 +28,15 @@ Throughout the test the trips have been evaluated based on a policy. The policy 
 
 \begin{table}
     \centering
-    \begin{tabular}{llll}
+    \begin{tabular}{|llll|}
+    \hline
+    \rowcolor{tablegreen}
     \textbf{Active days} & \textbf{Start} & \textbf{End} & \textbf{Weight} \\ \hline
     Monday - Friday      & 07:00:00       & 09:00:00     & 1.16             \\
     Monday - Friday      & 15:00:00       & 17:00:00     & 1.12            \\
     Saturday - Sunday    & 09:00:00       & 13:00:00     & 1.02           \\
     Saturday - Sunday    & 20:00:00       & 23:59:59     & 1.12            \\
-    Saturday - Sunday    & 00:00:00       & 00:04:00     & 1.325             \\ \hline
+    Saturday - Sunday    & 00:00:00       & 00:04:00     & 1.325             \\\hline
     \end{tabular}
     \caption{Critical time intervals with weights}
     \label{tab:crittimevalues}
@@ -40,7 +44,9 @@ Throughout the test the trips have been evaluated based on a policy. The policy 
 
 \begin{table}
     \centering
-    \begin{tabular}{ll}
+    \begin{tabular}{|ll|}
+    \hline
+    \rowcolor{tablegreen}
     \textbf{Interval (\%)}   & \textbf{Weight} \\ \hline
     {[}0, 10{[}        & 1.3                   \\
     {[}10, 20{[}       & 1.4                   \\
@@ -57,7 +63,9 @@ Throughout the test the trips have been evaluated based on a policy. The policy 
 
 \begin{table}
     \centering
-    \begin{tabular}{ll}
+    \begin{tabular}{|ll|}
+    \hline
+    \rowcolor{tablegreen}
     \textbf{Interval (m/s)} & \textbf{Weight} \\ \hline
     {[}6, 7{[}              & 1.05             \\
     {[}7, 8{[}              & 1.10             \\
@@ -74,7 +82,9 @@ Throughout the test the trips have been evaluated based on a policy. The policy 
 
 \begin{table}
     \centering
-    \begin{tabular}{ll}
+    \begin{tabular}{|ll|}
+    \hline
+    \rowcolor{tablegreen}
     \textbf{Interval (m/s)} & \textbf{Brake Weight} \\ \hline
     {[}8, 9{[}              & 1.05 			             \\
     {[}9, 10{[}             & 1.10			              \\
@@ -91,7 +101,9 @@ Throughout the test the trips have been evaluated based on a policy. The policy 
 
 \begin{table}
     \centering
-    \begin{tabular}{ll}
+    \begin{tabular}{|ll|}
+    \hline
+    \rowcolor{tablegreen}
     \textbf{Action} & \textbf{Base weight} \\ \hline
     Acceleration    & 40                   \\
     Brake           & 65                   \\
