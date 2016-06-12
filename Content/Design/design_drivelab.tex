@@ -19,9 +19,16 @@ While the logic behind the button is complex, usage is simple and easy to unders
 \label{fig:start_stop_finishing_trip}
 \end{figure}
 
-Data presentation is complicated, both by the extensiveness of the data itself, but also the limited screen size of a smartphone. In other words, the application has to fit a lot of information into a small screen. With the goal of having an easily understandable system, the extensive data is remedied by using descriptive summaries, rather than presenting raw data. The small screen is however still an issue, and for this reason the application offers a multilevel description of trips, each presenting a certain level of data. Each level of description is presented on its own screen, and ranges from a broad description down to specific statistics. For an arbitrary trip, these screens can be seen in \textbf{FIGUR REF}.
+Data presentation is complicated, both by the extensiveness of the data itself, but also the limited screen size of a smartphone. In other words, the application has to fit a lot of information into a small screen. With the goal of having an easily understandable system, the extensive data is remedied by using descriptive summaries, rather than presenting raw data. The small screen is however still an issue, and for this reason the application offers a multilevel description of trips, each presenting a certain level of data. Each level of description is presented on its own screen, and ranges from a broad description down to specific statistics. For an arbitrary trip, these screens can be seen in Figure \ref{fig:tripoverview}.
 
-Looking at the left screen, users are first presented with a list of all trips showing general statistics. These are useful mostly for identifying a trip. In key with keeping Drive-LaB simple to use and understand, the user can also see the trip score summarized as a smiley. The smileys range between green/happy and red/sad. They allow for cursory trip evaluation, without the need to look at more detailed statistics.
-The second screen displays a score summary, indicating how metrics affect the base score. The screen clearly visualizes which metrics are problem areas, allowing the user to identify points of possible improval.
-The third and fourth screen both shows specifics, and allows the user to see exactly what was registered during a trip. The third screen places the route on a map, showing the user exactly where locations were logged. The fourth screen shows exact metric counts, allowing the user to see why a metric score turned out the way it did.
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.465\textwidth]{Pictures/tripoverview}
+\caption{Presentation of trips split across 4 screens}
+\label{fig:tripoverview}
+\end{figure}
+
+Looking at the top left screen, users are first presented with a list of all trips showing general statistics. These are useful mostly for identifying a trip. In key with keeping Drive-LaB simple to use and understand, the user can also see the trip score summarized as a smiley. The smileys range between green/happy and red/sad. They allow for cursory trip evaluation, without the need to look at more detailed statistics.
+The top right screen displays a score summary, indicating how metrics affect the base score. The screen clearly visualizes which metrics are problem areas, allowing the user to identify points of possible improval.
+On Figure \ref{fig:tripoverview}, the bottom screens both show evaluation specifics, and allows the user to see exactly what was registered during a trip. The left screen places the route on a map, showing the user exactly where locations were logged. The right screen shows exact metric counts, allowing the user to see why a metric score turned out the way it did.
 The different levels of information allow users to only navigate as deep as desired. As such, some users might be satisfied with seeing the resulting smiley, and will not be forced to look at details. For those who want more detailed results however, these are also made available.
