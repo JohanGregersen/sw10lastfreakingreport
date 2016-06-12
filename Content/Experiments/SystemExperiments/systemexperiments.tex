@@ -1,7 +1,7 @@
 \subsection{System Experiments}\label{subsec:expsystem}
 An important aspect to validate is the impact on trip-scores caused by the diversity of users' smartphones. In a usage based insurance context, users needs to be treated equally, which relies entirely upon their smartphone and the GPS antenna. Two smartphones logging the same trip, should report the same tripscore. Such an analysis can be quite extensive, involving an entire market of smartphones and different versions of GPS antennas. Instead, a small applicability test will tell whether this system is vulnerable to GPS inaccuracy. 
 
-We conduct a test which will be referred to as an applicability test. An applicability test will confirm whether or not smartphones are good enough to equally score trips. It was conducted by bringing five different smartphones and two high quality GPS trackers into the same car, and recording the trip with all entities at the same time. If the system is applicable for usage based insurance, the smartphones needs to report the same tripscores, and the route needs to be highly similar to those recorded by the high quality GPS trackers.
+We conduct a test which will be referred to as an applicability test. An applicability test will confirm whether or not smartphones are good enough to equally score trips. It was conducted by bringing five different smartphones and two high quality GPS trackers\citep{quality_gps_device} into the same car, and recording the trip with all entities at the same time. If the system is applicable for usage based insurance, the smartphones needs to report the same tripscores, and the route needs to be highly similar to those recorded by the high quality GPS trackers.
  
 \begin{figure}[tb]
 \centering
@@ -34,7 +34,7 @@ BT-Q1300ST (\#2)   & 69.956   & \ \ 72.785   & 85.139   & 27.074 \\\hline
 
 When examining trip 1 from table \ref{tab:smartphone_test_one} which has a length of approximately 36200 meters, two smartphones and one high quality GPS gets a score ranging from 37000-40000 which is good. But the remaining four tripscores disagree with varying severity. The worst is the Huawei Y330, which score this trip 81819.4. However, the Huawei Y330 only logs 23\% of the average GPS-coordinates compared to the other devices. The Huawei continues this trend throughout the test, and seems unfit for use in usage based insurance. Another alarming result is the degree to which the two high quality GPS devices disagrees. One scores the trip 37909.8 and the other 69955.7 which is a big difference.
 
-Looking at trip 2 from table \ref{tab:smartphone_test_one} which has a length of approximately 28200 meters, three devices range from 25000-28750 in tripscore. The noteworthy result compared to trip 1 is, that the three devices with a low tripscore are not the same as those in trip 1.
+Looking at trip 2 in table \ref{tab:smartphone_test_one} which has a length of approximately 28200 meters, three devices range from 25000-28750 in tripscore. The noteworthy result compared to trip 1 is, that the three devices with a low tripscore are not the same as those in trip 1.
 
 The same pattern reoccur with trip 3 from table \ref{tab:smartphone_test_one}, which has a length of approximately 13400, but this time four devices gets a score ranging from 16500-24050, which are rather similar. The last three devices got a much higher tripscore, the highest being 85138.6, approximately 535\% above the trip-length, and it was logged by one of the high quality GPS devices. To highlight the disagreement between the two high quality GPS devices, the other device got a score of 20980.8. 
 
@@ -44,7 +44,7 @@ When analyzing the results from this test, the immediate thought may be to throw
 
 The second factor is the use of third party software for map-matching of the spatio-temporal trajectories collected by the smartphones, called TrackMatching\citep{trackmatch}. TrackMatch attempts to mapmatch a series of spatio-temporal points to the OSM road network, and output the entire route by segments and map-adjusted GPS points. How TrackMatch decides to readjust these GPS points are outside our control, and we did not implement a module to oversee this readjusting, so this influence cannot be changed. 
 
-It was decided to repeat the applicability test and eliminate the GPS interference as much as possible. This was done by spreading each GPS device out inside the car, and create as much space between them as possible. The possible margin of error by using a separated reference point was disregarded. 
+It was decided to repeat the applicability test and eliminate the GPS interference as much as possible. The GPS devices was arranged in the car with as much distance as possible between them. The possible margin of error by using a separated reference point was disregarded. 
 
 \begin{table*}[tb]
 \centering
