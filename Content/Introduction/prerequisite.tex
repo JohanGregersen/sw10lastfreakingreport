@@ -1,7 +1,7 @@
 \subsection{Prerequisites}\label{subsec:prereq}
-Drive-LaB is based on \citep{sw9_report}. The project features a metric-based scoring model for UBI, and also focuses on being intuitive and understandable. Furthermore, it features an advanced data warehouse capable of storing all required data for supporting the described scoring model. Drive-LaB utilizes both the data warehouse and metric-based scoring model, although with certain improvements. The implemented data warehouse is shown in Figure \ref{app:fig:newdatawarehouse}. What is most notable is that the subtrip fact table have not been implemented, however a \texttt{Competition Information} table and a \texttt{CompetingIn} table have been introduced.
+Drive-LaB is based on \citep{sw9_report}. The project features a metric-based scoring model for UBI, and also focuses on being intuitive and understandable. Furthermore, it features an advanced data warehouse capable of storing all required data for supporting the described scoring model. Drive-LaB utilizes both the data warehouse and metric-based scoring model, although with certain improvements. The implemented data warehouse is shown in Figure \ref{app:fig:newdatawarehouse}. What is most notable is that the \texttt{SubtTripFact} table have not been implemented, however a \texttt{Competition Information} table and a \texttt{CompetingIn} table have been introduced.
 
-The scoring model have not been altered, however the flexibility of the model have allowed us to create a more fitting policy for the system. The policy used for the experiments will be described in Section \ref{sec:experiments}. Each metric delinquency will be divided into 8 different intervals, with different weights for each interval. Each metric being scored by the following algorithm:
+The scoringmodel have not been altered, however the flexibility of the model have allowed us to create a more fitting policy for the system. The policy used for the experiments will be described in Section \ref{sec:experiments}. Each metric delinquency will be divided into 8 different intervals, with different weights for each interval. Each metric being scored by the following algorithm:
 
 $$
 \left( \frac { \sum _{ i }^{ n }{ \left( { interval }_{ i }*\quad { weight }_{ i } \right)  }  }{ 100 }  \right) \quad -\quad 1
@@ -14,4 +14,4 @@ ax^{y} + bx + c\quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad
 where\quad x = AcummulatedWeight
 \end{align*}
 
-The full description of the tripscoring is described in \citep{sw9_report} at Section 5.1.
+The full description of the scoringmodel is described in \citep{sw9_report} at Section 5.1.
