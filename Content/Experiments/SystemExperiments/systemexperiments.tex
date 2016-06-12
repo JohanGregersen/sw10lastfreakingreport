@@ -1,7 +1,7 @@
 \subsection{System Experiments}\label{subsec:expsystem}
-An important aspect to validate is the impact on trip-scores caused by the diversity of users' smartphones. In a usage based insurance context, users needs to be treated equally, which relies entirely upon their smartphone and the GPS antenna. E.g. two smartphones logging the same trip, should report the same tripscore. Such an analysis can be quite extensive, involving an entire market of smartphones and different versions of GPS antennas. Instead, a small applicability test will tell whether this system is vulnerable to GPS inaccuracy. 
+An important aspect to validate is the impact on trip-scores caused by the diversity of users' smartphones. In a usage based insurance context, users needs to be treated equally, which relies entirely upon their smartphone and the GPS antenna. Two smartphones logging the same trip, should report the same tripscore. Such an analysis can be quite extensive, involving an entire market of smartphones and different versions of GPS antennas. Instead, a small applicability test will tell whether this system is vulnerable to GPS inaccuracy. 
 
-An applicability test was conducted by bringing five different smartphones and two high quality GPS trackers into the same car, and recording the trip with all entities at the same time. If the system is applicable for usage based insurance, the smartphones needs to report the same tripscores, and the route needs to be highly similar to those recorded by the high quality GPS trackers.
+We conduct a test which will be referred to as an applicability test. An applicability test will confirm whether or not smartphones are good enough to equally score trips. It was conducted by bringing five different smartphones and two high quality GPS trackers into the same car, and recording the trip with all entities at the same time. If the system is applicable for usage based insurance, the smartphones needs to report the same tripscores, and the route needs to be highly similar to those recorded by the high quality GPS trackers.
  
 \begin{figure}[tb]
 \centering
@@ -16,12 +16,14 @@ With these seven devices, four trips were completed driving around in northern J
 \centering
 \caption{The tripscores from all seven recording devices, on all four trips used in the test, can be seen in this table}
 \label{tab:smartphone_test_one}
-\begin{tabular}{lllllllll}
-       & Trip length & OnePlus One & Samsung G. S5 & HTC One Mini 2 & Huawei Y330 & Samsung G. S4 & BT-Q1300ST(\#1) & BT-Q1300ST(\#2) \\
-Trip 1 & ~36200 & 50190.9     & 40091.5       & 75063.2        & 81819.4 & 37010.3       & 37909.8         & 69955.7         \\
-Trip 2 & ~28200 & 58922.3     & 56780.8       & 28734.2        & 128056  & 27761.6       & 25372.5         & 72784.6         \\
-Trip 3 & ~13400 & 42751.4     & 24026         & 21012.4        & 50622.1 & 16927.1       & 20980.8         & 85138.6         \\
-Trip 4 & ~14400 & 23228.1     & 27530.3       & 19202.5        & 13082.1 & 18824.8       & 23916.6         & 27074.8        
+\begin{tabular}{|l|llllllll}
+\hline
+\rowcolor{tablegreen}
+       & Trip length & OnePlus One & Samsung G. S5 & HTC One Mini 2 & Huawei Y330 & Samsung G. S4 & BT-Q1300ST(\#1) & BT-Q1300ST(\#2) \\\hline
+Trip 1 & ~36200      & 50190.9     & 40091.5       & 75063.2        & 81819.4     & 37010.3       & 37909.8         & 69955.7         \\
+Trip 2 & ~28200      & 58922.3     & 56780.8       & 28734.2        & 128056      & 27761.6       & 25372.5         & 72784.6         \\
+Trip 3 & ~13400      & 42751.4     & 24026         & 21012.4        & 50622.1     & 16927.1       & 20980.8         & 85138.6         \\
+Trip 4 & ~14400      & 23228.1     & 27530.3       & 19202.5        & 13082.1     & 18824.8       & 23916.6         & 27074.8 \\\hline
 \end{tabular}
 \end{table*}
 
@@ -43,12 +45,14 @@ It was decided to repeat the applicability test and eliminate the GPS interferen
 \centering
 \caption{My caption}
 \label{tab:smartphone_test_two}
-\begin{tabular}{llllllll}
-       & Trip Length & OnePlus One & Samsung G. S5 & HTC One Mini 2 & Samsung G. S4 & BT-Q1300ST(\#1) & BT-Q1300ST(\#2) \\
-Trip 1 & 36300       & 64511.4     & 46668.4           & 54563.5        & 37474.6           & 37800.1         & 41260.4         \\
-Trip 2 & 28200       & 31074.8     & 48169.3           & 39439.1        & 29242.3           & 30397.4         & 37028.7         \\
-Trip 3 & 13400       & 17102.9     & 19029.6           & 27674.4        & 16671.8           & 26439.6         & 36530.7         \\
-Trip 4 & 14400       & 18223.1     & 22779.1           & 29766.8        & 18094             & 25064.1         & 45327.1        
+\begin{tabular}{|l|lllllll}
+\hline
+\rowcolor{tablegreen}
+       & Trip Length & OnePlus One & Samsung G. S5 & HTC One Mini 2 & Samsung G. S4 & BT-Q1300ST(\#1) & BT-Q1300ST(\#2) \\\hline
+Trip 1 & 36300       & 64511.4     & 46668.4       & 54563.5        & 37474.6       & 37800.1         & 41260.4         \\
+Trip 2 & 28200       & 31074.8     & 48169.3       & 39439.1        & 29242.3       & 30397.4         & 37028.7         \\
+Trip 3 & 13400       & 17102.9     & 19029.6       & 27674.4        & 16671.8       & 26439.6         & 36530.7         \\
+Trip 4 & 14400       & 18223.1     & 22779.1       & 29766.8        & 18094         & 25064.1         & 45327.1         \\\hline
 \end{tabular}
 \end{table*}
 

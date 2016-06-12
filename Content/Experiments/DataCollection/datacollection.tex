@@ -1,5 +1,116 @@
 \subsection{Data Collection}\label{sec:datacollection}
-Releasing Drive-LaB publically has allowed for the collection of a sizeable dataset. For this report, \textbf{NUMBER} people participated, contributing a total of \textbf{NUMBER} trips spanning \textbf{NUMBER} kilometers. The trips are all logged between May 1st, 2016 and June 10th, 2016. All installations of Drive-LaB uses the same setup for logging locations, meaning that the setup is uniform across all contributed trips (See \ref{subsubsec:location_logging}). As mentioned, the requested sample rate is set at 1hz, but conditions such as hardware limitations and poor signal can block this from being possible. As such, the collected data varies in sample rate. The total average of the dataset is \textbf{NUMBER}, still making it high-frequency, but lower than the desired 1hz.
+Releasing Drive-LaB publically has allowed for the collection of a sizeable dataset. For this report, 51 people participated, contributing a total of 581 trips spanning 13.075 kilometers. The trips are all logged between May 1st, 2016 and June 11th, 2016. All installations of Drive-LaB uses the same setup for logging locations, ensuring a uniform premise across all contributed trips. As mentioned in section \ref{subsubsec:location_logging}, the requested sample rate is set at 1hz, but conditions such as hardware limitations and poor signal can block this from being possible. As such, the collected data varies in sample rate. The total average of the dataset is 0.630hz, still making it high-frequency, but lower than the desired 1hz.
 
 \subsubsection{Data}\label{subsec:data}
 Trips logged through Android devices contain a set of latitudes, longitudes and timestamps with second-precision. Drive-LaB does not store data permanently and therefore only holds this data in memory, namely using the Android Location class (See \ref{android_location}). As trips are sent to the storage server, all data is treated by the intermediate server, described in \ref{subsec:api}. Upon reaching the storage server, all data matches the data warehouse described in \ref{sw9_report}. \textbf{Tilføj mere - Der er ingen quality, vi bruger competingin, vi stjæler IMEI, og tilføjer localtripid} 
+
+\subsubsection{Policy}\label{subsec:policy}
+Throughout the test the trips have been evaluated based on a policy. The policy we have described in Tables \ref{tab:roadtypevalues}, \ref{tab:crittimevalues}, \ref{tab:speedingvalues}, \ref{tab:accelerationvalues} and \ref{tab:jerkbrakenvalues}. The base values for the delinquencies are described in Table \ref{tab:basevalues}. The most noticeable change is the polynomial scoring have been omitted, as it is uncertain how the equation directly affects the scoring of the system.
+
+\begin{table}
+    \centering
+    \begin{tabular}{ll}
+    \textbf{Roadtype} & \textbf{Weight} \\ \hline
+    Motorway          & 0.8               \\
+    Trunk             & 0.9               \\
+    Primary           & 0.95               \\
+    Secondary         & 1.05            \\
+    Tertiary          & 1.1             \\
+    Unclassified      & 1.1             \\
+    Residential       & 1.2             \\
+    Service           & 1.2             \\ \hline
+    \end{tabular}
+    \caption{Roadtypes with weights}
+    \label{tab:roadtypevalues}
+\end{table}
+
+\begin{table}
+    \centering
+    \begin{tabular}{llll}
+    \textbf{Active days} & \textbf{Start} & \textbf{End} & \textbf{Weight} \\ \hline
+    Monday - Friday      & 07:00:00       & 09:00:00     & 1.16             \\
+    Monday - Friday      & 15:00:00       & 17:00:00     & 1.12            \\
+    Saturday - Sunday    & 09:00:00       & 13:00:00     & 1.02           \\
+    Saturday - Sunday    & 20:00:00       & 23:59:59     & 1.12            \\
+    Saturday - Sunday    & 00:00:00       & 00:04:00     & 1.325             \\ \hline
+    \end{tabular}
+    \caption{Critical time intervals with weights}
+    \label{tab:crittimevalues}
+\end{table}
+
+\begin{table}
+    \centering
+    \begin{tabular}{ll}
+    \textbf{Interval (\%)}   & \textbf{Weight} \\ \hline
+    {[}0, 10{[}        & 1.3                   \\
+    {[}10, 20{[}       & 1.4                   \\
+    {[}20, 30{[}       & 1.5                   \\
+    {[}30, 40{[}       & 1.6                   \\
+    {[}40, 50{[}       & 1.7                   \\
+    {[}50, 60{[}       & 1.8                   \\
+    {[}60, 70{[}       & 1.9                   \\
+    {[}70, $\infty${]} & 2.0                   \\ \hline
+    \end{tabular}
+    \caption{Speeding intervals with weights}
+    \label{tab:speedingvalues}
+\end{table}
+
+\begin{table}
+    \centering
+    \begin{tabular}{ll}
+    \textbf{Interval (m/s)} & \textbf{Weight} \\ \hline
+    {[}6, 7{[}              & 1.05             \\
+    {[}7, 8{[}              & 1.10             \\
+    {[}8, 9{[}              & 1.175             \\
+    {[}9, 10{[}             & 1.275             \\
+    {[}10, 11{[}            & 1.40            \\
+    {[}11, 12{[}            & 1.55             \\
+    {[}12, 13{[}            & 1.725             \\
+    {[}13, $\infty${]}      & 2.0             \\ \hline
+    \end{tabular}
+    \caption{Acceleration with weights}
+    \label{tab:accelerationvalues}
+\end{table}
+
+\begin{table}
+    \centering
+    \begin{tabular}{ll}
+    \textbf{Interval (m/s)} & \textbf{Brake Weight} \\ \hline
+    {[}8, 9{[}              & 1.05 			             \\
+    {[}9, 10{[}             & 1.10			              \\
+    {[}10, 11{[}            & 1.175   		           \\
+    {[}11, 12{[}            & 1.275  		            \\
+    {[}12, 13{[}            & 1.40   		          \\
+    {[}13, 14{[}            & 1.55    		          \\
+    {[}14, 15{[}            & 1.725  		            \\
+    {[}15, $\infty${]}      & 2.0    	   	       \\ \hline
+    \end{tabular}
+    \caption{Jerks and brakes with weights}
+    \label{tab:jerkbrakenvalues}
+\end{table}
+
+\begin{table}
+    \centering
+    \begin{tabular}{ll}
+    \textbf{Action} & \textbf{Base weight} \\ \hline
+    Acceleration    & 40                   \\
+    Brake           & 65                   \\
+    Jerk            & 15                 \\ \hline
+    \end{tabular}
+    \caption{Base weights for accelerations, brakes and jerks}
+    \label{tab:basevalues}
+\end{table}
+
+%
+%\begin{table}
+%    \centering
+%    \begin{tabular}{ll}
+%    \textbf{Parameter} & \textbf{Weight} \\ \hline
+%    A                  & 1            \\
+%    B                  & 1            \\
+%    C                  & 0               \\
+%    Polynomial degree  & 1            \\ \hline
+%    \end{tabular}
+%    \caption{Weights for all polynomial functions}
+%    \label{tab:polyvalues}
+%\end{table}
