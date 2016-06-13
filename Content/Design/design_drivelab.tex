@@ -3,7 +3,7 @@ The frontend of Drive-LaB has two responsibilities in the overall system, namely
 
 \subsubsection{Data Collection}\label{subsubsec:design_datacollection}
 Data collection is complicated by requiring user interaction. Without additional hardware, it is not possible to automatically detect the beginning or end of a trip. As such, users are required to manually control when their smartphone should start and stop tracking their movement.
-Upon ending a trip, a sequence of actions takes place. A series of locations has been logged, and is passed on to the API server. To achieve this, data is converted into classes readable by the API server. Furthermore, trips are packaged into JSON objects which can be received by the REST service hosted on the API server described in Section \ref{sec:api_server}. If the API server is unavailable, trips are cached locally and bundled the next time a trip is ended. This sequence of events does not require user interaction, and is fully automatable. Summarizing the process of collecting location data, one can gather three different working states for the application:
+Upon ending a trip, a sequence of actions takes place. A series of locations has been logged, and is passed on to the API server. To achieve this, data is converted into classes readable by the API server. Furthermore, trips are packaged into JSON objects which can be received by the REST service hosted on the API server described in Section \ref{sec:api_server}. If the API server is unavailable, trips are cached locally and bundled the next time a trip is ended. This sequence of events does not require user interaction, and is fully automated. Summarizing the process of collecting location data, one can gather three different working states for the application:
 
 \begin{itemize}
 \item Idle - Ready to track a new trip
@@ -32,7 +32,7 @@ Data presentation is complicated, both by the extensiveness of the data itself, 
 \end{figure}
 
 On the top left screen, users are first presented with a list their trips ordered by date. For each trip, general statistics are displayed. These are useful mostly for identifying the trip. In key with keeping Drive-LaB simple to use and understand, the user can also see the tripscore summarized as a smiley. Smileys range between green/happy and red/sad. They allow for cursory trip evaluation, without the need to look at more detailed statistics.
-The top right screen is shown when clicking a trip, and displays a more extensive score summary. The screen uses a pie chart to visualize the relative influence of each metric, allowing the user to identify points of possible improval.
+The top right screen is shown when clicking a trip, and displays a more extensive score summary. The screen uses a pie chart to visualize the relative influence of each metric, allowing the user to identify points of possible improvement.
 On Figure \ref{fig:tripoverview}, the bottom screens both show evaluation specifics, letting the user see exactly what was registered during a trip. The left screen places the route on top of a map, showing the user exactly where locations were logged. The right screen shows exact metric counts, allowing the user to see why a metric score turned out the way it did.
 The different levels of information allow users to navigate only to the desired detail level. As such, some users might be satisfied with seeing the resulting smiley, and will not be forced to look at details. For those who want more detailed results however, these are also made available.
 
