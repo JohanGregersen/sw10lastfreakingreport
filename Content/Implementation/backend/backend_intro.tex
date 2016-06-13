@@ -1,4 +1,3 @@
 \subsection{Backend implementation}\label{subsec:backend_impl}
-The servers are virtual machines running Ubuntu, a GNU/Linux operating system, and does not naturally run any .exe programs. Mono is an open source implementation of .NET, capable of running C\# software on Ubuntu \citep{mono}. Using Mono causes some implications when porting from initial use of Visual Studio to Mono, and these implications are, among others, stated during the implementation description below. 
-
+Servers for the Drive-LaB backend are virtual machines running Ubuntu, a GNU/Linux operating system, and does not naturally run any Windows executables (.exe). Mono is an open source implementation of .NET, capable of running C\# software on Ubuntu \citep{mono}. Because Mono does not implement the complete feature set of .NET, using Mono causes some issues when porting from initial use of Visual Studio to Mono. These issues are, among others, stated in the following implementation description. 
 
