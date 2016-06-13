@@ -1,10 +1,3 @@
 This section describes the design of a full-stack UBI system. Drive-LaB is designed to collect, process and store spatio-temporal data from its users. It is a complex system but is designed to be simple to understand and use. Complexity should not be an issue for neither the end user nor the insurance company.
 A goal of this paper is to answer whether smartphones are suitable devices for UBI. For this purpose, the frontend of Drive-LaB is designed as a mobile application. This choice eliminates the need for a dedicated tracking device, while increasing accessibility for anyone wanting to use Drive-LaB.
 The design of Drive-LaB as a complete system can be seen in Figure \ref{fig:system_model}. It is composed of three overall components. On the right side of Figure \ref{fig:system_model} is the storage server. In itself, it contains no logic, and simply acts as storage for the data warehouse. Left of the storage server, is an API server that acts as interface for the frontend, and performs all required operations on incoming data. No data is stored on the API server permanently, but is instead sent to the storage server. Finally, Drive-LaB has a frontend application. It is responsible for location tracking, and visual presentation of the results calculated on the API server. As such the frontend allows users to evaluate trips after driving them. External services such as GPS satellites are used to provide location data for Drive-LaB.
-
-\begin{figure*}[tb]
-\centering
-\includegraphics[width=0.95\textwidth]{Pictures/system_model}
-\caption{Composition of the system}
-\label{fig:system_model}
-\end{figure*}
