@@ -30,7 +30,7 @@ Looking closer at the multicollinearity between accelerations and brakes, there 
 \label{fig:abcorrel}
 \end{figure}
 
-Figure \ref{fig:abcorrel} clearly illustrates the correlation between accelerations and brakes. Another reason why these metrics correlate can be the thresholds used in the policy to calculate the scores. As earlier mentioned, the threshold for brakes are 8 $m/s^2$ whereas accelerations are counted from 6 $m/s^2$. If we had no thresholds, and the delinquencies were scored the same, the correlation would be 1.0 as it only depended on the speed of the vehicle. 
+Figure \ref{fig:abcorrel} clearly illustrates the correlation between accelerations and brakes. Another reason why these metrics correlate can be the thresholds used in the policy to calculate the scores. As earlier mentioned, the threshold for brakes are 8 $m/s^2$ whereas accelerations are counted from 6 $m/s^2$. If there were no thresholds, and the delinquencies were scored the same, the correlation would be 1.0 as it only depended on the speed of the vehicle. 
 Jerks was the metric that met the highest level of skepticism when the scoringmodel was designed, and the correlation shows that it was not completely unwarranted. It does show a lot of correlation with both brakes and accelerations. Figure \ref{fig:ajcorrel} shows the correlation between accelerations and jerks. Jerks are, as mentioned, calculated as $m/s^3$, and a driver with many accelerations are almost bound to have a lot of jerks as it is hard to keep a constant acceleration.
 
 \begin{figure}[tb]
