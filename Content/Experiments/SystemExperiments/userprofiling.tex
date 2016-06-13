@@ -6,14 +6,14 @@ Creating driver profiles is one of the strengths in Drive-LaB. With a descriptiv
 
 Beside the obvious difference in percentages, looking at where the drivers generate their scores, show clear differences. Figure \ref{fig:avgmetricper} and Figure \ref{fig:piecharts} shows a comparison between the two drivers, portrayed as a bar chart and a pie chart with the distribution of the tripscore based on metrics, respectively. Looking at Driver 1, a lot of the score actually comes from accelerations at roughly 21\%, brakes at roughly 28\% and to some extend jerks at roughly 11\%. It is also worth mentioning that roadtypes actually scored negative on average. Looking at the pie chart in Figure \ref{fig:piecharts}, brakes is easily recognizable as the biggest contributor to a higher score.
 
-\begin{figure*}[tb]
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.465\textwidth]{Pictures/AverageMetricsPercentage}
-\caption{A bar chart of the distribution of tripscore percentage by metrics for Driver 1 and Driver 2}
+\caption{A bar chart of the distribution of tripscore percentage by metrics forDriver 1 and Driver 2}
 \label{fig:avgmetricper}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[tb]
+\begin{figure*}[h]
 \centering
 \includegraphics[width=0.95\textwidth]{Pictures/piecharts}
 \caption{A bar chart of the distribution of tripscore percentage by metrics for Driver 1 and Driver 2}
@@ -24,7 +24,7 @@ Driver 2 has quite a different distribution than Driver 1, aside from a lower tr
 
 \paragraph{Normalized Metrics} are the average metrics on a certain distance driven. For easy comparison the distance chosen is 1.000 meters. Looking at Driver 1 in Figure \ref{fig:avgmetricnorm}, Driver 1 has 6.84 points with jerks flagged given the chosen distance. Looking at Driver 2 and comparing it to Driver 1, Driver 2 almost halves the amount of accelerations, brakes and jerks per 1.000 meters. The only metric Driver 2 has more of, given the chosen distance, is speeding.
 
-\begin{figure}[tb]
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.465\textwidth]{Pictures/AverageMetricsNorm}
 \caption{A bar chart of the metrics per 1.000 meters for Driver 1}
@@ -33,14 +33,15 @@ Driver 2 has quite a different distribution than Driver 1, aside from a lower tr
 
 \paragraph{Severity of Delinquencies} is one of the big tells when differentiating between drivers. It is noticeable when looking at Figure \ref{fig:car8intervals}, which represents Driver 1, there is a slight decline with a spike in the last interval. There might be several reasons as to why the last interval spike but the primary reason is that the interval is everything above a threshold, thus a much larger interval than the previous. Comparing Driver 1 to Driver 2, shown in Figure \ref{fig:car21intervals}, there is quite a different distribution.
 
-\begin{figure*}[tb]
+\begin{figure*}[h]
 \centering
+\vspace*{-1in}
 \includegraphics[width=0.95\textwidth]{Pictures/car8intervals}
 \caption{A bar chart of the distribution of metrics within the intervals for Driver 1}
 \label{fig:car8intervals}
 \end{figure*}
 
-\begin{figure*}[tb]
+\begin{figure*}[h]
 \centering
 \includegraphics[width=0.95\textwidth]{Pictures/car21intervals}
 \caption{A bar chart of the distribution of metrics within the intervals for Driver 2}
